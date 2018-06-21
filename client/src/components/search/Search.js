@@ -34,7 +34,9 @@ class Search extends Component {
             this.state.end_year +
             "0101"
         )
-        .then(response => this.displayResults(response));
+        .then(response =>
+          this.props.displayResults(response.data.response.docs)
+        );
     }
   };
 
@@ -50,7 +52,6 @@ class Search extends Component {
             type="text"
             className="form-control"
             name="topic"
-            placeholder="Topic"
           />
         </div>
         <div className="form-group">
@@ -61,7 +62,6 @@ class Search extends Component {
             type="text"
             className="form-control"
             name="start_year"
-            placeholder="Start Year"
           />
         </div>
         <div className="form-group">
@@ -72,7 +72,6 @@ class Search extends Component {
             type="text"
             className="form-control"
             name="end_year"
-            placeholder="End Year"
           />
         </div>
         <button className="btn btn-primary" onClick={this.handleFormSubmit}>

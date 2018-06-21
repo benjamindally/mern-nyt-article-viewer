@@ -1,7 +1,7 @@
 import React from "react";
 
 const Nav = () => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <a className="navbar-brand" href="/">
       Start a new Search
     </a>
