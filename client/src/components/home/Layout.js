@@ -9,9 +9,12 @@ class Layout extends Component {
   };
 
   displayResults = response => {
-    //console.log(response);
     this.setState({ results: response });
-    console.log(this.state.results);
+  };
+
+  noMatch = () => {
+    alert("Please check your search terms. No results were found.");
+    window.location = "/";
   };
 
   render() {
@@ -26,6 +29,7 @@ class Layout extends Component {
           <Search
             results={this.state.results}
             displayResults={this.displayResults}
+            noMatch={this.noMatch}
           />
         )}
         {this.state.results.map(results => (
@@ -35,6 +39,7 @@ class Layout extends Component {
             url={results.web_url}
             saveArticle={this.saveArticle}
             key={results._id}
+            id={results._id}
           />
         ))}
       </div>

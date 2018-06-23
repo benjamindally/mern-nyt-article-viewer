@@ -34,9 +34,13 @@ class Search extends Component {
             this.state.end_year +
             "0101"
         )
-        .then(response =>
-          this.props.displayResults(response.data.response.docs)
-        );
+        .then(response => {
+          if (response.data.response.docs.length < 1) {
+            this.props.noMatch();
+            return;
+          }
+          this.props.displayResults(response.data.response.docs);
+        });
     }
   };
 
@@ -74,7 +78,7 @@ class Search extends Component {
             name="end_year"
           />
         </div>
-        <button className="btn btn-primary" onClick={this.handleFormSubmit}>
+        <button className="btn btn-secondary" onClick={this.handleFormSubmit}>
           Search
         </button>
       </form>
